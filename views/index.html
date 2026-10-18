@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercise Tracker</title>
+    <link rel="shortcut icon" href="https://cdn.freecodecamp.org/universal/favicons/favicon.ico" type="image/x-icon"/>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
+    <link href="style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <div class="container">
+        <h1>Exercise tracker</h1>
+        <form action="/api/users" method="POST">
+            <h3>Create a new user</h3>
+            <p><code>POST /api/users</code></p>
+            <input id="uname" type="text" name="username" placeholder="username">
+            <input type="submit" value="Submit">
+        </form>
+        <form action="" id="exercise-form" method="POST">
+            <h3>Add exercises</h3>
+            <p><code>POST /api/users/:_id/exercises</code></p>
+            <input id="uid" type="text" name=":_id" placeholder=":_id">
+            <input id="desc" type="text" name="description" placeholder="description">
+            <input id="dur" type="text" name="duration" placeholder="duration (mins)">
+            <input id="date" type="text" name="date" placeholder="yyyy-mm-dd">
+            <input type="submit" value="Submit">
+        </form>
+        <script>
+          const exerciseForm = document.getElementById("exercise-form");
+          exerciseForm.addEventListener("submit", function() {
+            const userId = document.getElementById("uid").value;
+            exerciseForm.action = `/api/users/${userId}/exercises`;
+          });
+        </script>
+    </div>
+</body>
+</html>
